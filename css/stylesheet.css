@@ -5,8 +5,8 @@
 
 #container {
   background-color: blue;
-  width: 120px;
-  height: 130px;
+  width: 600px;
+  height: 600px;
   display: flex;
   flex-wrap: wrap;
   margin-left: auto;
@@ -20,4 +20,8 @@ div, div {
   width: 10px;
   background-color: red;
   border: 1px black solid;
+}
+
+.square:hover {
+  background-color: blue;
 }
