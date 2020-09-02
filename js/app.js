@@ -1,13 +1,15 @@
 const init = {
     parameterSize: 16, 
     addDivs: function(x){
-        let container = document.getElementById("container");
+        let containers = document.getElementById("container");
         for(let i = 0; i<x; i++){
             for (let j = 0; j<x; j++){
                 let newDiv = document.createElement("div");
                 newDiv.setAttribute("class", "square");
                 newDiv.setAttribute("style", "height: "+x+"px");
-                container.appendChild(newDiv);
+                init.colorChange(newDiv, "blackSquare");
+                containers.appendChild(newDiv);
+                
             }
         }
     },
@@ -15,7 +17,14 @@ const init = {
         init.parameterSize = 5;
         init.addDivs(init.parameterSize);
         //this doesnt do anything that I want it to just yet
-    }
+    },
+    colorChange: function(newDiv, updateClass){
+        newDiv.addEventListener("mouseenter", e => newDiv.classList.add(updateClass));
+    },
+    deleteDivs: function(){
+        for(let div in containers = document.getElementById("container")){
+        containers.remove();}
+    },
+    changeSize: 439
 };
-
 init.addDivs(init.parameterSize);
