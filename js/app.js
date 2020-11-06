@@ -1,5 +1,5 @@
 const init = {
-    parameterSize: 16, 
+    parameterSize: 16,
     addDivs: function(x){
         let containers = document.getElementById("container");
         for(let i = 0; i<x; i++){
@@ -9,7 +9,7 @@ const init = {
                 newDiv.setAttribute("style", "height: "+x+"px");
                 init.colorChange(newDiv, "blackSquare");
                 containers.appendChild(newDiv);
-                
+
             }
         }
     },
@@ -28,3 +28,17 @@ const init = {
     changeSize: 439
 };
 init.addDivs(init.parameterSize);
+
+let experiment = document.getElementById("experiment");
+
+let n = 16;
+
+for (let i=0; i<n; i++){
+  let call = document.createElement("ul")
+   for (let j=0;j<n;j++){
+     let rowe = document.createElement("li");
+     rowe.innerText = i;
+     call.appendChild(rowe);
+   }
+  experiment.appendChild(call);
+}
