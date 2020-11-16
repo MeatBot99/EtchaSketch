@@ -1,5 +1,5 @@
 const init = {
-    parameterSize: 16,
+    parameterSize: 25,
     addDivs: function(x){
         let containers = document.getElementById("container");
         for(let i = 0; i<x; i++){
@@ -25,13 +25,13 @@ const init = {
         for(let div in containers = document.getElementById("container")){
         containers.remove();}
     },
-    changeSize: 439
+    changeSize: 438
 };
 init.addDivs(init.parameterSize);
 
 let experiment = document.getElementById("experiment");
 
-let n = 16;
+let n = 25;
 
 for (let i=0; i<n; i++){
   let call = document.createElement("ul")
@@ -41,4 +41,19 @@ for (let i=0; i<n; i++){
      call.appendChild(rowe);
    }
   experiment.appendChild(call);
+}
+
+let divExperiment = document.getElementById("divExperiment");
+
+
+let m = 3;
+
+for (let p=0; p<m; p++){
+  let scall = document.createElement("div")
+   for (let q=0;q<m;q++){
+     let srowe = document.createElement("p");
+     srowe.innerText = ".";
+     scall.appendChild(srowe);
+   }
+divExperiment.appendChild(scall);
 }
