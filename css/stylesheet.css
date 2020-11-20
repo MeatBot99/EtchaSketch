@@ -1,7 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
+
+:root {
+  --dimension: 60px;
+}
+
 
 #container {
   background-color: blue;
@@ -30,6 +36,7 @@
   background-color: black;
 }
 
+
 #experiment, #divExperiment {
   display: flex;
   /*flex-wrap: wrap;*/
@@ -38,31 +45,48 @@
   /*height: 300px;*/
   justify-content: space-evenly;
   /*align-items: stretch;*/
-  width: 500px;
-  height: 100%;
-  min-height: 0;
+  width: 960px;
+  height: 960px;
+  /*min-height: 0;*/
   margin-left: auto;
   margin-right: auto;
   margin-top: 35px;
 }
 
+#divExperiment {
+  /*flex-direction: column;*/
+
+}
+
 #divExperiment div{
   /*width: 100%;*/
-  flex-basis: 500px;
+  /*flex-basis: 500px;*/
   flex-grow: 1;
-  align-items: stretch;
+
+  /*flex-direction: column;
+  /*align-items: stretch;*/
 
 }
 
-#divExperiment div div, p{
+#divExperiment div div{
   border: purple 1px solid;
+  flex-grow: 1;
+  height: var(--dimension);
+
 }
+
+/*p:after
+{
+    content: '.';
+    visibility: hidden;
+}*/
 
 p{
   color: orange;
+
 }
 
-//////////////////////////////////////////////////////////////////
+
 ul {
   /*width: 50px;
   height: 50px;*/
