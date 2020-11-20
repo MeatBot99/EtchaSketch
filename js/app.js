@@ -1,3 +1,47 @@
+
+
+const createGrid = function(){
+
+  let divExperiment = document.getElementById("divExperiment");
+  let m = 16;
+
+  for (let p=0; p<m; p++){
+    let scall = document.createElement("div")
+    for (let q=0;q<m;q++){
+      let srowe = document.createElement("div");
+      srowe.classList.add("squares");
+      scall.appendChild(srowe);
+    };
+    divExperiment.appendChild(scall);
+  };
+
+  let baseSquare = document.querySelector(".squares");
+  let compStyle = window.getComputedStyle(baseSquare);
+  let compWidth = compStyle.getPropertyValue('width');
+  let dimension = document.documentElement;
+
+  dimension.setAttribute("style", `--dimension: ${compWidth}`);
+
+};
+
+createGrid();
+
+///////////////////////////////////////////////////////////////////////////////////////////
+const roughDraftGrid = function(){
+  let experiment = document.getElementById("experiment");
+  let n = 25;
+
+  for (let i=0; i<n; i++){
+    let call = document.createElement("ul")
+     for (let j=0;j<n;j++){
+       let rowe = document.createElement("li");
+       rowe.innerText = i;
+       call.appendChild(rowe);
+     };
+    experiment.appendChild(call);
+  };
+};
+
 const init = {
     parameterSize: 25,
     addDivs: function(x){
@@ -28,47 +72,3 @@ const init = {
     changeSize: 438
 };
 init.addDivs(init.parameterSize);
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-let experiment = document.getElementById("experiment");
-
-let n = 25;
-
-for (let i=0; i<n; i++){
-  let call = document.createElement("ul")
-   for (let j=0;j<n;j++){
-     let rowe = document.createElement("li");
-     rowe.innerText = i;
-     call.appendChild(rowe);
-   }
-  experiment.appendChild(call);
-}
-
-let divExperiment = document.getElementById("divExperiment");
-
-//Trying to figure out the way to make the squares height be equal its width. There is not an easy answer
-//anywhere. The getComputedStyle doenst seem to be very helpful as it just mostly returns empty strings.
-let m = 3;
-
-for (let p=0; p<m; p++){
-  let scall = document.createElement("div")
-   for (let q=0;q<m;q++){
-     let srowe = document.createElement("div");
-     srowe.classList.add("squares");
-
-
-     scall.appendChild(srowe);
-   }
-divExperiment.appendChild(scall);
-}
-///////////////////////////////////////////////////////////////////////////////////////////
-
-let baseSquare = document.querySelector(".squares");
-let compStyle = window.getComputedStyle(baseSquare);
-let compWidth = compStyle.getPropertyValue('width');
-
-
-let dimension = document.documentElement;
-
-dimension.setAttribute("style", `--dimension: ${compWidth}`);
