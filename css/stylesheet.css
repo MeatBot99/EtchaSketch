@@ -5,7 +5,7 @@
 }
 
 :root {
-  --dimension: 60px;
+  --dimension: ;
 }
 
 
@@ -72,24 +72,16 @@
   border: purple 1px solid;
   flex-grow: 1;
   height: var(--dimension);
+  transition: all 2s;
 
 }
 
-/*p:after
-{
-    content: '.';
-    visibility: hidden;
-}*/
-
 p{
   color: orange;
-
 }
 
 
 ul {
-  /*width: 50px;
-  height: 50px;*/
   border: 1px solid black;
   background-color: lightblue;
 }

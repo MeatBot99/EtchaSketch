@@ -1,9 +1,20 @@
 
+/*TODO: create UI elements that allow control for grid size
+        create UI elements that allow color control/erasing/random colors
+  Optional: have a preview html canvas displaying the overall picture
+            institute a save feature where you can download a svg  or png file
+            of the html canvas item.
 
-const createGrid = function(){
+  Twitch Icon: sizes 28x28, 56x56, and 112x112 pixels
+               png format
+              transparent background
+              25kb sizes
+              no copyrights
+*/
+const createGrid = function(sWidth){
 
   let divExperiment = document.getElementById("divExperiment");
-  let m = 16;
+  let m = sWidth;
 
   for (let p=0; p<m; p++){
     let scall = document.createElement("div")
@@ -24,7 +35,9 @@ const createGrid = function(){
 
 };
 
-createGrid();
+createGrid(16);
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 const roughDraftGrid = function(){
