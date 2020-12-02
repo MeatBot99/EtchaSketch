@@ -12,12 +12,13 @@
               no copyrights
 */
 const createGrid = function(sWidth){
-
+  removeGrid();
   let divExperiment = document.getElementById("divExperiment");
   let m = sWidth;
 
   for (let p=0; p<m; p++){
-    let scall = document.createElement("div")
+    let scall = document.createElement("div");
+    scall.classList.add("lines");
     for (let q=0;q<m;q++){
       let srowe = document.createElement("div");
       srowe.classList.add("squares");
@@ -35,8 +36,17 @@ const createGrid = function(sWidth){
 
 };
 
+
+const removeGrid = function(){
+  let targetDivs = document.getElementsByClassName("lines");
+  let divArray = Array.from(targetDivs)
+  divArray.forEach(div=>div.remove())
+  console.log(divArray)
+};
+
 createGrid(16);
 
+//removeGrid();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////

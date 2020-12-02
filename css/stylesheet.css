@@ -72,7 +72,7 @@
   border: purple 1px solid;
   flex-grow: 1;
   height: var(--dimension);
-  transition: all 2s;
+  transition: all 1s;
 
 }
 
