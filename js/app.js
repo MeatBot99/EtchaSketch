@@ -19,11 +19,11 @@ const createGrid = function(sWidth){
   for (let p=0; p<m; p++){
     let scall = document.createElement("div");
     scall.classList.add("lines");
-    for (let q=0;q<m;q++){
-      let srowe = document.createElement("div");
-      srowe.classList.add("squares");
-      scall.appendChild(srowe);
-    };
+      for (let q=0;q<m;q++){
+        let srowe = document.createElement("div");
+        srowe.classList.add("squares");
+        scall.appendChild(srowe);
+      };
     divExperiment.appendChild(scall);
   };
 
@@ -41,15 +41,31 @@ const removeGrid = function(){
   let targetDivs = document.getElementsByClassName("lines");
   let divArray = Array.from(targetDivs)
   divArray.forEach(div=>div.remove())
-  console.log(divArray)
 };
 
-createGrid(16);
+try {
+  createGrid(16);
+}
+catch (e){
+  console.table(e);
+}
 
-//removeGrid();
+const returnValue = function(){
+  let number = this.value;
+  createGrid(number);
+  console.log(number)
+}
+
+let slider = document.getElementById("input-number");
+slider.addEventListener("click",returnValue)
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+/*I am keeping these older versions as a reference for now. */
+
 const roughDraftGrid = function(){
   let experiment = document.getElementById("experiment");
   let n = 25;
@@ -68,7 +84,7 @@ const roughDraftGrid = function(){
 const init = {
     parameterSize: 25,
     addDivs: function(x){
-        let containers = document.getElementById("container");
+        let containers = document.getElementById("first-container");
         for(let i = 0; i<x; i++){
             for (let j = 0; j<x; j++){
                 let newDiv = document.createElement("div");
