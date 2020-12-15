@@ -13,6 +13,8 @@
 */
 const createGrid = function(sWidth){
   removeGrid();
+  let slider=  document.getElementById("input-number");
+  slider.value = sWidth;
   let divExperiment = document.getElementById("divExperiment");
   let m = sWidth;
 
@@ -33,7 +35,7 @@ const createGrid = function(sWidth){
   let dimension = document.documentElement;
 
   dimension.setAttribute("style", `--dimension: ${compWidth}`);
-
+  return sWidth
 };
 
 
@@ -43,6 +45,9 @@ const removeGrid = function(){
   divArray.forEach(div=>div.remove())
 };
 
+let sliderValue= document.getElementById("slider-value");
+sliderValue.innerText= createGrid(16);
+
 try {
   createGrid(16);
 }
@@ -51,14 +56,39 @@ catch (e){
 }
 
 const returnValue = function(){
+  let sliderValue= document.getElementById("slider-value");
   let number = this.value;
+  sliderValue.innerText = number;
   createGrid(number);
   console.log(number)
 }
 
 let slider = document.getElementById("input-number");
-slider.addEventListener("click",returnValue)
+slider.oninput = returnValue
 
+let response = function(){
+  console.log("A change Has Occured")
+}
+
+let drawBlack = document.getElementById("draw-black");
+drawBlack.addEventListener("input", response)
+
+
+  /*while(drawBlack.checked===true){
+    console.log("cat")
+  }*/
+
+/*if(drawBlack.checked===true){
+  let squares = document.querySelectorAll(".squares");
+  try {
+    forEach((square, squares) => {
+      square.classList.add("paint-black")
+    });
+    squares.classList.add("paint-black")
+}
+  catch(e){console.table(e)}
+  console.log(squares)
+}*/
 
 
 

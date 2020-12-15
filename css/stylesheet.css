@@ -6,8 +6,114 @@
 
 :root {
   --dimension: ;
+  --dark: black;
 }
 
+#sliderValue::after{
+  content: attr(data-magnitude);
+  font-size: 14px;
+  position: absolute;
+  top: 40px;
+}
+
+#main-container {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px goldenrod dashed;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.squares:hover {
+  background-color: var(--dark);
+}
+
+#control-panel {
+  display: flex;
+  flex-direction: column;
+  /*margin-top: 35px;*/
+}
+
+#canvas {
+  width: 200px;
+  height: 200px;
+  /*border: solid black 1px;*/
+
+}
+
+#canvas-frame {
+  /*margin-top: 35px;*/
+  border: solid black 1px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#range-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  /*text-align: center;*/
+}
+
+.paint-black {
+  background-color = black;
+}
+
+#input-number {
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+#input-number:active {
+  box-shadow: 0px 0px 3px gray;
+}
+
+#slider-value {
+  color: black;
+}
+
+#experiment, #divExperiment {
+  display: flex;
+  background-color: orange;
+  justify-content: space-evenly;
+  width: 800px;
+  height: 800px;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  margin-top: 35px;
+}
+
+#divExperiment {
+
+}
+
+#divExperiment div{
+  flex-grow: 1;
+}
+
+#divExperiment div div{
+  border: purple 1px solid;
+  flex-grow: 1;
+  height: var(--dimension);
+  /*transition: all 0.1s;*/
+
+}
+
+#experiment::before{
+  content: "cat";
+}
+
+/*.square:hover {
+  background-color: blue;
+}*/
+
+.blackSquare {
+  background-color: black;
+}
 
 #first-container {
   background-color: blue;
@@ -28,49 +134,8 @@
   border: 1px black solid;
 }
 
-/*.square:hover {
-  background-color: blue;
-}*/
-
-.blackSquare {
-  background-color: black;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#experiment, #divExperiment {
-  display: flex;
-  background-color: orange;
-  justify-content: space-evenly;
-  width: 960px;
-  height: 960px;
-  /*margin-left: auto;
-  margin-right: auto;*/
-  margin-top: 35px;
-}
-
-#divExperiment {
-
-}
-
-#divExperiment div{
-  flex-grow: 1;
-}
-
-#divExperiment div div{
-  border: purple 1px solid;
-  flex-grow: 1;
-  height: var(--dimension);
-  /*transition: all 0.5s;*/
-
-}
-
 p{
-  color: orange;
+  /*color: orange;*/
 }
 
 
