@@ -13,10 +13,10 @@
 */
 const createGrid = function(sWidth){
   removeGrid();
-  let slider=  document.getElementById("input-number");
-  slider.value = sWidth;
-  let divExperiment = document.getElementById("divExperiment");
   let m = sWidth;
+  let slider=  document.getElementById("input-number");
+  slider.value = m;
+  let divExperiment = document.getElementById("divExperiment");
 
   for (let p=0; p<m; p++){
     let scall = document.createElement("div");
@@ -41,8 +41,8 @@ const createGrid = function(sWidth){
 
 const removeGrid = function(){
   let targetDivs = document.getElementsByClassName("lines");
-  let divArray = Array.from(targetDivs)
-  divArray.forEach(div=>div.remove())
+  let divArray = Array.from(targetDivs);
+  divArray.forEach(div=>div.remove());
 };
 
 let sliderValue= document.getElementById("slider-value");
@@ -52,7 +52,7 @@ try {
   createGrid(16);
 }
 catch (e){
-  console.table(e);
+  console.log(e);
 }
 
 const returnValue = function(){
@@ -60,19 +60,53 @@ const returnValue = function(){
   let number = this.value;
   sliderValue.innerText = number;
   createGrid(number);
-  console.log(number)
 }
 
 let slider = document.getElementById("input-number");
-slider.oninput = returnValue
+slider.oninput = returnValue;
 
 let response = function(){
-  console.log("A change Has Occured")
+  if(this.checked===true){
+    console.log("This is checked")
+  }else{
+    console.log("This is NOT checked")
+  }
+  paint();
 }
 
-let drawBlack = document.getElementById("draw-black");
-drawBlack.addEventListener("input", response)
+/*Looks like simple adding and removing of classes that will have a mouseenter event that will
+  change the classlist. Put some logit in here because this project needs to move.
 
+  Triggers on "input" at the moment. Seems to work.
+
+  Keyboard shortcuts would make this app easier to use and would be a good exercise in key bindings.
+*/
+let drawBlack = document.getElementById("draw-black");
+drawBlack.checked = true;
+drawBlack.addEventListener("input", response);
+
+let changedColor = document.getElementsByClassName("squares")
+let paint = function(){
+    for(let square of changedColor){
+      let blacken = function(){
+        square.classList.add("paint-black");
+      };
+      let unBlacken = function(){
+        square.classList.remove("paint-black");
+      }
+      if(drawBlack.checked===true){
+
+      square.addEventListener("mouseenter", blacken)
+
+    }else if(drawBlack.checked===false){
+      square.addEventListener("mouseenter", unBlacken)
+      /*square.classList.toggle("paint-black")
+      square.classList.toggle("paint-clear")*/
+    }
+  }
+}
+paint();
+//if(squares.style())
 
   /*while(drawBlack.checked===true){
     console.log("cat")
@@ -95,7 +129,7 @@ drawBlack.addEventListener("input", response)
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 /*I am keeping these older versions as a reference for now. */
-
+/*
 const roughDraftGrid = function(){
   let experiment = document.getElementById("experiment");
   let n = 25;
@@ -141,3 +175,4 @@ const init = {
     changeSize: 438
 };
 init.addDivs(init.parameterSize);
+*/

@@ -16,24 +16,23 @@
     <div class="container" id="range-box">
       <div id="control-panel">
         <div class="check-box-with-label">
-          <input type="checkbox" id="draw-black" name="draw-mode" value="draw-black" checked="true">
+          <input type="checkbox" id="draw-black" name="draw-mode" value="draw-black">
           <label for="draw-black">Black</label>
         </div>
         <div class="check-box-with-label">
-          <input type="checkbox" id="erase" name="draw-mode" value="erase" checked="false">
+          <input type="checkbox" id="erase" name="draw-mode" value="erase">
           <label for="erase">Erase</label>
         </div>
         <div class="check-box-with-label">
-          <input type="checkbox" id="draw-color" name="draw-mode" value="draw-color" unchecked>
+          <input type="checkbox" id="draw-color" name="draw-mode" value="draw-color">
           <label for="draw-color">Color</label>
         </div>
         <div class="check-box-with-label">
-          <input type="checkbox" id="draw-random" name="draw-mode" value="draw-random" unchecked>
+          <input type="checkbox" id="draw-random" name="draw-mode" value="draw-random">
           <label for="draw-random">Random</label>
         </div>
-        <div class="check-box-with-label">
-          <input type="checkbox" id="clear-page" name="draw-mode" value="clear-page" unchecked>
-          <label for="draw-page">Clear</label>
+        <div class="control-button">
+          <button type="button" id="clear-page" name="button" value="clear-page">Clear</button>
         </div>
         <p id="slider-value"></p>
         <input type="range" id="input-number" name="input-number"
@@ -46,8 +45,8 @@
     </div>
     <div id="divExperiment"></div>
   </div>
-    <div id="experiment" data-trial="16"></div>
-    <div id="first-container"></div>
+    <!--<div id="experiment" data-trial="16"></div>
+    <div id="first-container"></div>-->
     <script src="js/app.js"></script>
     <script src="js/data.js"></script>
   </body>
