@@ -1,5 +1,5 @@
 
-/*TODO: create UI elements that allow control for grid size
+/*TODO: [x]create UI elements that allow control for grid size
         create UI elements that allow color control/erasing/random colors
   Optional: have a preview html canvas displaying the overall picture
             institute a save feature where you can download a svg  or png file
@@ -25,16 +25,18 @@ let sliderValue= document.getElementById("slider-value");
     drawRandom = document.getElementById("draw-random");
     changedColor = document.getElementsByClassName("squares")
     divExperiment = document.getElementById("divExperiment");
+    /*
 
-//drawBlack.checked = true;
+    Document element attributes not setting correctly right now. Frustrating.
+    colorPicker = document.getElementById("color-picker");
+    //paintColor = document.documentElement;
+    compColor = colorPicker.value;
+*/
 
-sliderValue.innerText= slider.value;
 
 const createGrid = function(sWidth){
   removeGrid();
-
   let m = sWidth;
-  /*let slider=  document.getElementById("input-number");*/
   slider.value = m;
 
 /*Variable and iterator names based on an earlier build. They don't make sense but they work*/
@@ -49,30 +51,25 @@ const createGrid = function(sWidth){
     divExperiment.appendChild(scall);
   };
 
-
-
 /*This little block of code sets each indivdual square's height to its width dynamically.*/
   let baseSquare = document.querySelector(".squares");
   let compStyle = window.getComputedStyle(baseSquare);
   let compWidth = compStyle.getPropertyValue('width');
   let dimension = document.documentElement;
   dimension.setAttribute("style", `--dimension: ${compWidth}`);
-
-  return sWidth
 };
 
+/*The paint function removes all classes and adds the desired color class and the square
+class back to achieve an "overwrite" feel. It was much simpler that I was making it.*/
 const paint = function(){
   let thisColor = this.dataset.mode;
-  for(let square of changedColor){
-    let paintColor = ()=> square.classList.add(thisColor);
-    square.addEventListener("mouseenter", paintColor);
+  let pigmentize = function(square){
+    let cls = this.classList;
+    this.classList.remove(...cls);
+    this.classList.add(thisColor, "squares");
   };
-
-  if(this.checked===false){
-    for(let square of changedColor){
-    let removePaint = ()=>square.classList.remove(thisColor);
-    square.addEventListener("mouseenter", removePaint);  
-    };
+  for(let square of changedColor){
+    square.onmouseenter = pigmentize;
   };
 };
 
@@ -82,14 +79,11 @@ const removeGrid = function(){
   divArray.forEach(div=>div.remove());
 };
 
-
-
 const returnValue = function(){
-  /*let sliderValue= document.getElementById("slider-value");*/
   let number = this.value;
   sliderValue.innerText = number;
-  createGrid(number);
-}
+  init(number);
+};
 
 slider.oninput = returnValue;
 
@@ -98,6 +92,13 @@ erase.addEventListener("input", paint);
 drawColor.addEventListener("input", paint);
 drawRandom.addEventListener("input", paint);
 
+const init = function(num){
+  createGrid(num);
+  sliderValue.innerText= slider.value;
+  drawBlack.checked=false;
+  erase.checked=false;
+  drawColor.checked=false;
+  drawRandom.checked=false;
+};
 
-window.onload = createGrid(16);
-//paint();
+window.onload = init(16);

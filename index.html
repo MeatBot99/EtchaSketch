@@ -15,19 +15,20 @@
     <div class="container" id="range-box">
       <div id="control-panel">
         <div class="check-box-with-label">
-          <input type="checkbox" id="draw-black" name="draw-mode" value="draw-black" data-mode="paint-black">
+          <input type="radio" id="draw-black" name="draw-mode" value="draw-black" data-mode="paint-black">
           <label for="draw-black">Black</label>
         </div>
         <div class="check-box-with-label">
-          <input type="checkbox" id="erase" name="draw-mode" value="erase" data-mode="paint-erase">
+          <input type="radio" id="erase" name="draw-mode" value="erase" data-mode="paint-erase">
           <label for="erase">Erase</label>
         </div>
         <div class="check-box-with-label">
-          <input type="checkbox" id="draw-color" name="draw-mode" value="draw-color" data-mode="paint-color">
+          <input type="radio" id="draw-color" name="draw-mode" value="draw-color" data-mode="paint-color">
           <label for="draw-color">Color</label>
+          <input type="color" id="color-picker">
         </div>
         <div class="check-box-with-label">
-          <input type="checkbox" id="draw-random" name="draw-mode" value="draw-random" data-mode="paint-random">
+          <input type="radio" id="draw-random" name="draw-mode" value="draw-random" data-mode="paint-random">
           <label for="draw-random">Random</label>
         </div>
         <div class="control-button">
@@ -44,8 +45,6 @@
     </div>
     <div id="divExperiment"></div>
   </div>
-    <!--<div id="experiment" data-trial="16"></div>
-    <div id="first-container"></div>-->
     <script src="js/app.js"></script>
     <script src="js/data.js"></script>
   </body>

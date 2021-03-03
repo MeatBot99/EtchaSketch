@@ -9,6 +9,7 @@
   --dark: black;
   --initheight: 200px;
   --initwidth: 200px;
+  --this-color: ;
 }
 
 #main-container {
@@ -57,7 +58,6 @@
 }
 
 .paint-color {
-  --this-color: red;
   background-color: var(--this-color);
 }
 
