@@ -25,16 +25,17 @@ let sliderValue= document.getElementById("slider-value");
     drawRandom = document.getElementById("draw-random");
     changedColor = document.getElementsByClassName("squares")
     divExperiment = document.getElementById("divExperiment");
-    /*
-
-    Document element attributes not setting correctly right now. Frustrating.
     colorPicker = document.getElementById("color-picker");
-    //paintColor = document.documentElement;
-    compColor = colorPicker.value;
-*/
+
+const choseColor = ()=>{
+  let paintColor = document.documentElement;
+      compColor = colorPicker.value;
+  paintColor.style.setProperty(`--this-color`, `${compColor}`);
+}
 
 
 const createGrid = function(sWidth){
+  choseColor();
   removeGrid();
   let m = sWidth;
   slider.value = m;
@@ -43,7 +44,7 @@ const createGrid = function(sWidth){
   for (let p=0; p<m; p++){
     let scall = document.createElement("div");
     scall.classList.add("lines");
-      for (let q=0;q<m;q++){
+      for (let q=0; q<m; q++){
         let srowe = document.createElement("div");
         srowe.classList.add("squares");
         scall.appendChild(srowe);
@@ -56,12 +57,13 @@ const createGrid = function(sWidth){
   let compStyle = window.getComputedStyle(baseSquare);
   let compWidth = compStyle.getPropertyValue('width');
   let dimension = document.documentElement;
-  dimension.setAttribute("style", `--dimension: ${compWidth}`);
+  dimension.style.setProperty(`--dimension`, `${compWidth}`);
 };
 
 /*The paint function removes all classes and adds the desired color class and the square
 class back to achieve an "overwrite" feel. It was much simpler that I was making it.*/
 const paint = function(){
+  choseColor();
   let thisColor = this.dataset.mode;
   let pigmentize = function(square){
     let cls = this.classList;
@@ -91,6 +93,7 @@ drawBlack.addEventListener("input", paint);
 erase.addEventListener("input", paint);
 drawColor.addEventListener("input", paint);
 drawRandom.addEventListener("input", paint);
+colorPicker.addEventListener("change", choseColor);
 
 const init = function(num){
   createGrid(num);
