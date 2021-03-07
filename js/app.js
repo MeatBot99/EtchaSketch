@@ -1,14 +1,11 @@
 
 /*TODO: [x]create UI elements that allow control for grid size
-        create UI elements that allow color control/erasing/random colors
+        [x]create UI elements that allow color control/erasing/random colors
   Optional: have a preview html canvas displaying the overall picture
-            institute a save feature where you can download a svg  or png file
-            of the html canvas item.
-
-  Looks like simple adding and removing of classes that will have a mouseenter event that will
-  change the classlist. Put some logit in here because this project needs to move.
-  Triggers on "input" at the moment. Seems to work.
-  Keyboard shortcuts would make this app easier to use and would be a good exercise in key bindings.
+            institute a save feature where you can download a svg  or png file of the
+            html canvas item.
+            Keyboard shortcuts would make this app easier to use and would be a good
+            exercise in key bindings.
 
   Twitch Icon: sizes 28x28, 56x56, and 112x112 pixels
                png format
@@ -31,8 +28,11 @@ const choseColor = ()=>{
   let paintColor = document.documentElement;
       compColor = colorPicker.value;
   paintColor.style.setProperty(`--this-color`, `${compColor}`);
-}
+};
 
+const qualityFunction = ()=> drawColor.click();
+
+colorPicker.onchange = qualityFunction;
 
 const createGrid = function(sWidth){
   choseColor();
@@ -60,15 +60,22 @@ const createGrid = function(sWidth){
   dimension.style.setProperty(`--dimension`, `${compWidth}`);
 };
 
-/*The paint function removes all classes and adds the desired color class and the square
-class back to achieve an "overwrite" feel. It was much simpler that I was making it.*/
+/*The paint function assigns background color to a specific color or the current random/chosen
+color instead of assigning classes.*/
 const paint = function(){
   choseColor();
-  let thisColor = this.dataset.mode;
-  let pigmentize = function(square){
-    let cls = this.classList;
-    this.classList.remove(...cls);
-    this.classList.add(thisColor, "squares");
+  const randColor = ()=> `#`+ Math.floor(Math.random()*16777215).toString(16);;
+  const pigmentize = function(square){
+    randColor();
+    if(drawColor.checked===true){
+      this.style.setProperty(`background-color`, `${colorPicker.value}`);
+    }else if(drawBlack.checked===true){
+      this.style.setProperty(`background-color`, `black`);
+    }else if(erase.checked===true){
+      this.style.setProperty(`background-color`, `transparent`);
+    } else if (drawRandom.checked===true){
+      this.style.setProperty(`background-color`, randColor())
+    }
   };
   for(let square of changedColor){
     square.onmouseenter = pigmentize;
